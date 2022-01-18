@@ -1,3 +1,4 @@
+import { aces } from "./grants/aces";
 import type { Category, AllDiceResults, Points } from "./types"
 
 var upperCategories:Category[] = new Array<Category>();
@@ -5,15 +6,7 @@ var upperCategories:Category[] = new Array<Category>();
 upperCategories = [
     {   
         displayName: "Aces",
-        grantedPoints: (allResults:AllDiceResults): Points => {
-            let aceCount = 0;
-            for (let i in allResults) {
-                if (allResults[i] == 1) {
-                    aceCount++;
-                }
-            }
-            return aceCount;
-        }
+        grantedPoints: aces
     },
     {
         displayName: "Twos",

@@ -4,9 +4,9 @@ class Dice {
     locked: boolean;
     result: DiceResult;
 
-    constructor(){
+    constructor(initialResult?:DiceResult){
         this.locked = false;
-        this.result = 0;
+        this.result = initialResult ?? 0;
     }
 
     roll():void {

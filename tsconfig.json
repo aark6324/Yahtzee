@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./out",
+        "typeRoots": ["./node_modules/@types"],
+        "module": "commonjs",
+        "target": "es2021",
+        "moduleResolution": "node",
+    },
+    "include": ["src/**/*.ts"]
+}
