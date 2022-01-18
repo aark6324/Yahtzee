@@ -1,11 +1,11 @@
-type DiceResult = Number;
-type Points = Number;   
+type DiceResult = number;
+type Points = number;   
 
 type AllDiceResults = DiceResult[];
-type CalcGrantedPoints = (allDiceResults: AllDiceResults) => Number;
+type CalcGrantedPoints = (allDiceResults: AllDiceResults) => number;
 
 interface Category {
-    displayName: String;
+    displayName: string;
     grantedPoints: CalcGrantedPoints;
 }
 
