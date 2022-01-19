@@ -1,8 +1,7 @@
-import type { AllDiceResults, Points } from "../types";
+import type { AllDiceResults, Points } from "../../../types";
 
-// 3 oak = 3 of a kind
 
-export const three_oak = (allResults:AllDiceResults): Points => {
+export const of_a_kind = (allResults: AllDiceResults, minCount: number): Points => {
     var counts = [];
     var sum: Points = 0;
     for (let number of allResults) {
@@ -13,7 +12,7 @@ export const three_oak = (allResults:AllDiceResults): Points => {
     for (let i=0; i<counts.length; i++) {
         if (!counts[i]) continue;
 
-        if (counts[i] >= 3) {
+        if (counts[i] >= minCount) {
             return sum;
 
         }

@@ -1,5 +1,4 @@
 import { Dice } from "./dice"
-import { upperCategories } from "./categories"
 import type { AllDiceResults, DiceResult } from "./types";
 
 
