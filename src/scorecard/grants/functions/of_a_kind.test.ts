@@ -19,4 +19,9 @@ describe("of_a_kind", ()=> {
         const score = of_a_kind(allDiceResults, 4);
         expect(score).toEqual(0);
     })
+    it("returns assigned amount of 22", ()=> {
+        const allDiceResults: AllDiceResults = [6,6,6,6,6];
+        const score = of_a_kind(allDiceResults, 5, 22);
+        expect(score).toEqual(22);
+    })
 })

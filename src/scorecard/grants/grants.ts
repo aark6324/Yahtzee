@@ -19,7 +19,7 @@ const grants = {
     long_straight:  (allResults: AllDiceResults) => sequence_of(allResults, 5, 40),
 
     // yahtzee = five of a kind
-    yahtzee:    (allResults: AllDiceResults) => of_a_kind(allResults, 5),
+    yahtzee:    (allResults: AllDiceResults) => of_a_kind(allResults, 5, 50),
 
 
 
