@@ -4,7 +4,7 @@ import type { AllDiceResults, Points } from "../types";
 
 
 type Scores = Partial<Record<CategoryKey, {
-    Points: null | Points
+    Points: Points
 }>>
 
 
