@@ -29,5 +29,20 @@ describe("Scorecard", () => {
             scorecard.claimGrantedPoints("three_of_a_kind", [3,5,2,3,3])
         }).toThrowError();
     })
+    it("returns true when category is claimed", () => {
+        scorecard.claimGrantedPoints("three_of_a_kind", [3,3,3,2,1]);
+        const isClaimed = scorecard.isCategoryClaimed("three_of_a_kind");
+        expect(isClaimed).toBeTruthy();
+    })
+    it("returns true when category is claimed with 0 points", () => {
+        scorecard.claimGrantedPoints("three_of_a_kind", [6,4,4,1,1]);
+        const isClaimed = scorecard.isCategoryClaimed("three_of_a_kind");
+        expect(isClaimed).toBeTruthy();
+    })
+    it("returns false when category is not claimed", () => {
+        const isClaimed = scorecard.isCategoryClaimed("twos");
+        expect(isClaimed).toBeFalsy();
+    })
+
 
 })
