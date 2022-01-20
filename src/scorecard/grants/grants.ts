@@ -1,5 +1,6 @@
 import type { AllDiceResults } from "../../types";
 import { of_a_kind } from "./functions/of_a_kind";
+import { sequence_of } from "./functions/sequence_of";
 import { sum_of_occurences } from "./functions/sum_of_occurrences";
 
 const grants = {
@@ -13,6 +14,9 @@ const grants = {
     // oak = of a kind
     three_oak:  (allResults: AllDiceResults) => of_a_kind(allResults, 3),
     four_oak:   (allResults: AllDiceResults) => of_a_kind(allResults, 4),
+
+    small_straight: (allResults: AllDiceResults) => sequence_of(allResults, 4, 30),
+    long_straight:  (allResults: AllDiceResults) => sequence_of(allResults, 5, 40),
 
     // yahtzee = five of a kind
     yahtzee:    (allResults: AllDiceResults) => of_a_kind(allResults, 5),
