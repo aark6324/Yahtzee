@@ -7,6 +7,17 @@ interface CategoryCollection {
 
 export type { CategoryCollection }
 
+export type CategoryKey = 
+    | "aces"
+    | "twos"
+    | "threes"
+    | "fours"
+    | "fives"
+    | "sixes"
+    | "three_of_a_kind"
+    | "four_of_a_kind"
+    | "yahtzee"
+
 export const allCategories: CategoryCollection = {
     aces: {
         displayName: "Aces",
