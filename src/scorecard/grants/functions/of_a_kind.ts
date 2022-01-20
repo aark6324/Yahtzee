@@ -10,9 +10,7 @@ export const of_a_kind = (allResults: AllDiceResults, minCount: number, assigned
     }
 
     for (let i=0; i<counts.length; i++) {
-        if (!counts[i]) continue;
-
-        if (counts[i] >= minCount) {
+        if (counts[i] && counts[i] >= minCount) {
             return (assignedPoints) ? assignedPoints : sum;
 
         }
