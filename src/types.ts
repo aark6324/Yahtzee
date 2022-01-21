@@ -1,5 +1,5 @@
 type DiceResult = number;
-type Points = number;   
+type Points = number;
 
 type AllDiceResults = DiceResult[];
 type CalcGrantedPoints = (allDiceResults: AllDiceResults) => number;
@@ -9,6 +9,4 @@ interface Category {
     grantedPoints: CalcGrantedPoints;
 }
 
-
-
-export type { DiceResult, AllDiceResults, CalcGrantedPoints, Category, Points }
+export type { DiceResult, AllDiceResults, CalcGrantedPoints, Category, Points };

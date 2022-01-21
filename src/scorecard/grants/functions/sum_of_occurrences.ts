@@ -1,8 +1,11 @@
-import type { AllDiceResults, Points } from "../../../types";
+import type { AllDiceResults, Points } from '../../../types';
 
-
-export const sum_of_occurences = (allResults: AllDiceResults, valueToCount: number): Points =>
+export const sum_of_occurences = (
+    allResults: AllDiceResults,
+    valueToCount: number,
+): Points =>
     allResults.reduce(
-        (accumulated, current) => current === valueToCount ? accumulated + current : accumulated
-        , 0
+        (accumulated, current) =>
+            current === valueToCount ? accumulated + current : accumulated,
+        0,
     );
