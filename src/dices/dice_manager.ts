@@ -30,7 +30,7 @@ export class DiceManager {
     }
     unlockAllDices() {
         for (let i=0; i<this.diceCount; i++) {
-            this.#dices[i+1].unlock();
+            this.#dices[i].unlock();
         }
     }
 }
