@@ -1,10 +1,6 @@
 import type { AllDiceResults, Points } from '../../../types';
 
-export const of_a_kind = (
-    allResults: AllDiceResults,
-    minCount: number,
-    assignedPoints?: Points,
-): Points => {
+export const of_a_kind = (allResults: AllDiceResults, minCount: number, assignedPoints?: Points): Points => {
     var counts = [];
     var sum: Points = 0;
     for (let number of allResults) {

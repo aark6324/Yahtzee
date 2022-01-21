@@ -1,10 +1,7 @@
 import type { AllDiceResults, Points } from '../../../types';
 
 // three of one number and two of another
-export const full_house = (
-    allResults: AllDiceResults,
-    assignedPoints: Points,
-): Points => {
+export const full_house = (allResults: AllDiceResults, assignedPoints: Points): Points => {
     var counts = [];
 
     for (let number of allResults) {

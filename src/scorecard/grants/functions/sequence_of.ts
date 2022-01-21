@@ -1,10 +1,6 @@
 import type { AllDiceResults, Points } from '../../../types';
 
-export const sequence_of = (
-    allResults: AllDiceResults,
-    sequenceLength: number,
-    assignedPoints: Points,
-): Points => {
+export const sequence_of = (allResults: AllDiceResults, sequenceLength: number, assignedPoints: Points): Points => {
     allResults.sort();
     let currentSeq = 0;
     let highestSeq = 0;
