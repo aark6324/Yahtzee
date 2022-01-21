@@ -1,7 +1,7 @@
 import { Dice } from './dice';
 import type { AllDiceResults } from '../types';
 
-export class DiceManager {
+export class DiceRoller {
     diceCount: number;
     #dices: Dice[];
 
