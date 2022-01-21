@@ -1,4 +1,4 @@
-import { Dice } from './dice';
+import { Dice } from './dices/dice';
 import type { AllDiceResults, DiceResult } from './types';
 
 var allDices: Dice[] = [];

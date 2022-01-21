@@ -1,4 +1,4 @@
-import { Dice } from './Dice';
+import { Dice } from './dice';
 
 describe('Dice', () => {
     let dice: Dice;

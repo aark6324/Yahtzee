@@ -1,4 +1,4 @@
-import type { DiceResult } from './types';
+import type { DiceResult } from '../types';
 
 class Dice {
     locked: boolean;
