@@ -1,12 +1,12 @@
 import type { AllDiceResults } from '../../types';
-import { allCategories } from '../categories';
+
 import { full_house } from './functions/full_house';
 import { of_a_kind } from './functions/of_a_kind';
 import { sequence_of } from './functions/sequence_of';
 import { sum_of_all } from './functions/sum_of_all';
 import { sum_of_occurences } from './functions/sum_of_occurrences';
 
-const grants = {
+export const grants = {
     aces: (allResults: AllDiceResults) => sum_of_occurences(allResults, 1),
     twos: (allResults: AllDiceResults) => sum_of_occurences(allResults, 2),
     threes: (allResults: AllDiceResults) => sum_of_occurences(allResults, 3),
@@ -28,5 +28,3 @@ const grants = {
 
     chance: (allResults: AllDiceResults) => sum_of_all(allResults),
 };
-
-export { grants };

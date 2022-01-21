@@ -7,7 +7,6 @@
         "prettify": "prettier --write .",
         "watch": "jest --watch --coverage",
         "test": "jest --coverage"
-
     },
     "jest": {
         "roots": [
