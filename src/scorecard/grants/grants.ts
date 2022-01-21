@@ -1,7 +1,9 @@
 import type { AllDiceResults } from '../../types';
+import { allCategories } from '../categories';
 import { full_house } from './functions/full_house';
 import { of_a_kind } from './functions/of_a_kind';
 import { sequence_of } from './functions/sequence_of';
+import { sum_of_all } from './functions/sum_of_all';
 import { sum_of_occurences } from './functions/sum_of_occurrences';
 
 const grants = {
@@ -23,6 +25,8 @@ const grants = {
 
     // yahtzee = five of a kind
     yahtzee: (allResults: AllDiceResults) => of_a_kind(allResults, 5, 50),
+
+    chance: (allResults: AllDiceResults) => sum_of_all(allResults),
 };
 
 export { grants };
