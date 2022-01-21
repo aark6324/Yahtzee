@@ -4,9 +4,10 @@
     "description": "TypeScript implementation of Yahtzee",
     "main": "app.ts",
     "scripts": {
-        "watch": "jest --watch --coverage",
         "prettify": "prettier --write .",
-        "test": "jest"
+        "watch": "jest --watch --coverage",
+        "test": "jest --coverage"
+
     },
     "jest": {
         "roots": [
