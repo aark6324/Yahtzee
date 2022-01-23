@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "rootDir": "./src",
-        "outDir": "./out",
+        "outDir": "./lib",
         "typeRoots": ["./node_modules/@types"],
         "module": "commonjs",
         "target": "es2021",

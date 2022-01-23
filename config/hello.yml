@@ -1,0 +1,10 @@
+handler: lib/hello.handler
+layers:
+  - {Ref: ApiLayerLambdaLayer}
+events:
+  - httpApi:
+      path: '/'
+      method: GET
+package:
+  exclude:
+    - node_modules/**

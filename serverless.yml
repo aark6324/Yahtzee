@@ -1,0 +1,33 @@
+service: yahtzee-api
+provider:
+  name: aws
+  httpApi:
+    payload: '2.0'
+    cors: true
+  runtime: nodejs14.x
+  region: eu-north-1
+  environment: ${file(config/env.yml):${opt:stage, self:provider.stage}}
+  stage: ${opt:stage, 'dev'}
+  versionFunctions: false
+
+layers:
+  apiLayer:
+    path: layer
+    description: The Node Modules
+    retain: false
+
+functions:
+  hello: ${file(config/hello.yml)}
+
+package:
+  exclude:
+    - .*
+    - pnpm-lock.yaml
+    - package-lock.json
+    - config/**
+    - src/**
+  excludeDevDependencies: false
+  individually: true
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
