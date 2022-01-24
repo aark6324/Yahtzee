@@ -5,3 +5,4 @@ pnpm-lock.yaml
 layer
 lib
 **/.DS_Store
+.serverless/
