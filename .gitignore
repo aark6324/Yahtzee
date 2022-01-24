@@ -3,4 +3,5 @@ coverage
 lib
 out
 layer
+**/.DS_Store
 package-lock.json
