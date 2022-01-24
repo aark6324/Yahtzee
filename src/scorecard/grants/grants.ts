@@ -1,4 +1,6 @@
 import type { AllDiceResults } from '../../types';
+import { bonuses } from '../bonuses';
+import { Scorecard } from '../scorecard';
 
 import { full_house } from './functions/full_house';
 import { of_a_kind } from './functions/of_a_kind';
@@ -14,6 +16,8 @@ export const grants = {
     fives: (allResults: AllDiceResults) => sum_of_occurences(allResults, 5),
     sixes: (allResults: AllDiceResults) => sum_of_occurences(allResults, 6),
 
+    upper_section_bonus: (scorecard: Scorecard) => bonuses.getUpperSectionBonus(scorecard, 35, 63),
+
     // oak = of a kind
     three_oak: (allResults: AllDiceResults) => of_a_kind(allResults, 3),
     four_oak: (allResults: AllDiceResults) => of_a_kind(allResults, 4),
@@ -27,4 +31,6 @@ export const grants = {
     yahtzee: (allResults: AllDiceResults) => of_a_kind(allResults, 5, 50),
 
     chance: (allResults: AllDiceResults) => sum_of_all(allResults),
+
+    yahtzee_bonus: (scorecard: Scorecard) => bonuses.getYahtzeeBonus(scorecard, 50, 50),
 };
