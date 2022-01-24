@@ -1,15 +1,19 @@
 import { allCategories } from './categories';
 import type { CategoryCollection, CategoryKey } from './categories';
 import type { AllDiceResults, Points } from '../types';
+import { SocketAddress } from 'net';
 
 type Scores = Partial<
     Record<
         CategoryKey,
         {
-            Points: Points;
+            Points_Sum: Points;
+            Points_Entries: Points[];
         }
     >
 >;
+
+export type { Scores };
 
 class Scorecard {
     categories: CategoryCollection;
@@ -23,18 +27,36 @@ class Scorecard {
         return allCategories[categoryKey].grantedPoints(allDiceResults);
     }
 
-    claimGrantedPoints(categoryKey: CategoryKey, allDiceResults: AllDiceResults): Points {
-        if (this.scores[categoryKey]) {
-            throw new Error('Cannot claim an already claimed category');
-        } else {
-            const points = allCategories[categoryKey].grantedPoints(allDiceResults);
-            this.scores[categoryKey] = { Points: points };
+    claimCategory(categoryKey: CategoryKey, allDiceResults: AllDiceResults): Points {
+
+        let entry = this.scores[categoryKey];
+        const points = allCategories[categoryKey].grantedPoints(allDiceResults);
+
+        if (entry) {
+            if (!allCategories[categoryKey].multipleClaimsAllowed) {
+                throw new Error('Cannot claim this category multiple times');
+            }
+
+
+            this.scores[categoryKey].Points_Sum = entry.Points_Sum + points;
+            this.scores[categoryKey].Points_Entries = entry.Points_Entries.concat(points);
+
             return points;
+        } else {
+
+            this.scores[categoryKey] = {
+                Points_Sum: points,
+                Points_Entries: [points],
+            }
+
+
         }
+
+        return this.scores[categoryKey].Points_Sum;
     }
 
-    getClaimedPoints(categoryKey: CategoryKey): Points {
-        return this.scores.hasOwnProperty(categoryKey) ? this.scores[categoryKey].Points : null;
+    getCategorySum(categoryKey: CategoryKey): Points {
+        return this.scores.hasOwnProperty(categoryKey) ? this.scores[categoryKey].Points_Sum : null;
     }
 
     isCategoryClaimed(categoryKey: CategoryKey): boolean {
