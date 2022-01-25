@@ -2,7 +2,7 @@ import { allCategories } from './categories';
 import type { CategoryCollection, CategoryKey } from './categories';
 import type { AllDiceResults, Points } from '../types';
 
-type Scores = Partial<
+export type Scores = Partial<
     Record<
         CategoryKey,
         {
