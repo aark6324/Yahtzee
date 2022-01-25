@@ -1,4 +1,4 @@
-handler: lib/hello.handler
+handler: lib/lambda/functions/hello.handler
 layers:
   - {Ref: ApiLayerLambdaLayer}
 events:
