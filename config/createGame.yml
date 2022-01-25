@@ -1,0 +1,10 @@
+handler: lib/lambda/functions/createGame.handler
+layers:
+  - {Ref: ApiLayerLambdaLayer}
+events:
+  - httpApi:
+      path: '/createGame'
+      method: GET
+package:
+  exclude:
+    - node_modules/**
