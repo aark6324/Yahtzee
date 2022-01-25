@@ -15,8 +15,8 @@ class Scorecard {
     categories: CategoryCollection;
     scores: Scores;
 
-    constructor() {
-        this.scores = {};
+    constructor(scores: Scores = {}) {
+        this.scores = scores
     }
 
     getGrantedPoints(categoryKey: CategoryKey, allDiceResults: AllDiceResults): Points {
