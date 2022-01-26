@@ -25,7 +25,7 @@ async function getGame(gameID: Identifier): Promise<Game | undefined> {
         .get({
             TableName: process.env.TABLE_NAME,
             Key: {
-                entitiyID: gameID,
+                entitiyID: `game#${gameID}`,
                 nodeID: 'game',
             },
         })
@@ -44,6 +44,49 @@ async function putPlayerSession(playerSession: PlayerSession) {
         .promise();
 }
 
+async function updateGame(game: Game): Promise<Game> {
+
+    let dynoRes = await client.update({
+        TableName: process.env.TABLE_NAME,
+        Key: {
+            entitiyID: game.entitiyID,
+            nodeID: game.nodeID,
+        },
+        UpdateExpression: "SET #current_players = #current_players + :incr",
+        ExpressionAttributeValues: {
+            ":incr": 1
+        },
+        ExpressionAttributeNames: {
+            "#current_players": "current_players"
+        },
+        ReturnValues: "ALL_NEW"
+    }).promise();
+
+    const updated_game = dynoRes.Attributes as Game;
+
+    if (updated_game.current_players === game.max_players) {
+        let dynoRes = await client.update({
+            TableName: process.env.TABLE_NAME,
+            Key: {
+                entitiyID: game.entitiyID,
+                nodeID: game.nodeID,
+            },
+            UpdateExpression: "SET #status = :new_status",
+            ExpressionAttributeValues: {
+                ":new_status": "playing"
+            },
+            ExpressionAttributeNames: {
+                "#status": "status"
+            }
+        }).promise();
+
+        return dynoRes.Attributes as Game;
+    }
+
+    return updated_game;
+}
+
+
 export const handler: APIGatewayProxyHandler = async (event, context): Promise<any> => {
     let response: JoinGameResponse;
 
@@ -61,6 +104,9 @@ export const handler: APIGatewayProxyHandler = async (event, context): Promise<a
             currentPlayers: game.current_players,
             maxPlayers: game.max_players,
         };
+
+
+
     } else {
         console.log("game:", game)
         response = { success: false };
