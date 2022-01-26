@@ -1,4 +1,3 @@
-import { AWSError } from "aws-sdk";
 import { Scores } from "../scorecard/scorecard";
 
 
@@ -21,7 +20,6 @@ export type GameStatus = "not_started" | "playing" | "finished";
 
 
 export interface PlayerSession {
-    playerID: Identifier
     scores: Scores
     entitiyID: string
     nodeID: string

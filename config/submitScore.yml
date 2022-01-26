@@ -1,9 +1,9 @@
-handler: lib/lambda/functions/joinGame.handler
+handler: lib/lambda/functions/submitScore.handler
 layers:
   - {Ref: ApiLayerLambdaLayer}
 events:
   - httpApi:
-      path: '/joinGame'
+      path: '/submitScore'
       method: POST
 package:
   exclude:

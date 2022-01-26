@@ -31,7 +31,6 @@ export const createGameItem = (max_players: PlayerCount = 2, gameID: Identifier 
 export const createPlayerSession = (gameID: Identifier, playerID: Identifier): PlayerSession => {
 
     let gameSession: PlayerSession = {
-        playerID,
         scores: {},
         entitiyID: `game#${gameID}`,
         nodeID: `player#${playerID}`,

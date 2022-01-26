@@ -29,6 +29,7 @@ functions:
   hello: ${file(config/hello.yml)}
   createGame: ${file(config/createGame.yml)}
   joinGame: ${file(config/joinGame.yml)}
+  submitScore: ${file(config/submitScore.yml)}
 
 package:
   exclude:
