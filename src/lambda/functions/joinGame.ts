@@ -21,16 +21,15 @@ interface JoinGameResponse {
 }
 
 async function getGame(gameID: Identifier): Promise<Game | undefined> {
-    let dynoRes = await client
-        .get({
+    console.log(gameID)
+    let dynoRes = await client.get({
             TableName: process.env.TABLE_NAME,
             Key: {
                 entitiyID: `game#${gameID}`,
                 nodeID: 'game',
             },
-        })
-        .promise();
-    console.log("getGame:", dynoRes);
+        }).promise();
+    console.log("getGame:", dynoRes.$response.error);
 
     return dynoRes.Item as Game;
 }
@@ -77,7 +76,8 @@ async function updateGame(game: Game): Promise<Game> {
             },
             ExpressionAttributeNames: {
                 "#status": "status"
-            }
+            },
+            ReturnValues: "ALL_NEW"
         }).promise();
 
         return dynoRes.Attributes as Game;
@@ -98,14 +98,13 @@ export const handler: APIGatewayProxyHandler = async (event, context): Promise<a
 
     if (game && game.current_players < game.max_players) {
         await putPlayerSession(playerSession);
+        const updated_game = await updateGame(game);
         response = {
             success: true,
-            gameStatus: game.status,
-            currentPlayers: game.current_players,
-            maxPlayers: game.max_players,
+            gameStatus: updated_game.status,
+            currentPlayers: updated_game.current_players,
+            maxPlayers: updated_game.max_players,
         };
-
-
 
     } else {
         console.log("game:", game)
