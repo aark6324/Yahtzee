@@ -16,6 +16,7 @@ provider:
       - 'dynamodb:GetItem'
       - 'dynamodb:Query'
       - 'dynamodb:Scan'
+      - 'dynamodb:UpdateItem'
     Resource: arn:aws:dynamodb:eu-north-1:922811907793:table/Yahtzee
 
 layers:
