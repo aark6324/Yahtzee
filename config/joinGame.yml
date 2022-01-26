@@ -1,0 +1,10 @@
+handler: lib/lambda/functions/joinGame.handler
+layers:
+  - {Ref: ApiLayerLambdaLayer}
+events:
+  - httpApi:
+      path: '/joinGame'
+      method: PUT
+package:
+  exclude:
+    - node_modules/**

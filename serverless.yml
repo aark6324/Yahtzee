@@ -27,6 +27,7 @@ layers:
 functions:
   hello: ${file(config/hello.yml)}
   createGame: ${file(config/createGame.yml)}
+  joinGame: ${file(config/joinGame.yml)}
 
 package:
   exclude:
