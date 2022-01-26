@@ -33,7 +33,7 @@ async function getPlayerScores(gameID: Identifier, playerID: Identifier): Promis
         }
     }).promise();
 
-    return dynoRes.Item as Scores;
+    return dynoRes.Item.scores as Scores;
 }
 
 
