@@ -37,13 +37,14 @@ async function getPlayerScores(gameID: Identifier, playerID: Identifier): Promis
 }
 
 
-async function putPlayerScores(gameID: Identifier, playerID: Identifier) {
+async function putPlayerScores(gameID: Identifier, playerID: Identifier, scores: Scores) {
 
-    let dynoRes = await client.put({
+    await client.put({
         TableName: process.env.TABLE_NAME,
         Item: {
             entitiyID: `game#${gameID}`,
-            nodeID: `player#${playerID}`
+            nodeID: `player#${playerID}`,
+            scores: scores,
         },
     }).promise();
 
@@ -63,6 +64,9 @@ export const handler: APIGatewayProxyHandler = async (event, context): Promise<a
     try {
 
         scorecard.claimGrantedPoints(body.category, body.rolledDices);
+
+        await putPlayerScores(body.gameID, body.playerID, scorecard.scores);
+
         response = { success: true, scores: scorecard.scores };
 
     } catch(err) {
