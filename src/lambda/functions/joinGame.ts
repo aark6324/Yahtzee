@@ -30,6 +30,7 @@ async function getGame(gameID: Identifier): Promise<Game | undefined> {
             },
         })
         .promise();
+    console.log("getGame:", dynoRes);
 
     return dynoRes.Item as Game;
 }
@@ -61,6 +62,7 @@ export const handler: APIGatewayProxyHandler = async (event, context): Promise<a
             maxPlayers: game.max_players,
         };
     } else {
+        console.log("game:", game)
         response = { success: false };
     }
 
